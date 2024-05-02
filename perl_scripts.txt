@@ -1,0 +1,411 @@
+write a peal script to get the filename as user input and check 
+whether the file exists or not.
+If the file exists then check whether the file is empty or not
+
+#!/usr/bin/perl
+
+print "Enter the filename: ";
+$filename = <STDIN>;
+chomp $filename;
+
+if (-e $filename) {
+  print "File $tilename exists \n";
+
+  if (-z $filename) {
+    print "File $filename is empty\n";
+  } else {
+    print "File $filename is not empty \n";
+} else {
+  print "File $filename does not exist \n";
+}
+
+write following regular expressions lusing perl
+Match a number, which is composed of even digits including 0
+perl -ne "print if /\b[02468]+\b/" file.txt
+
+Match a number which a may be negative or positive, may have a decimal point.
+perl -ne "print if /\b[+-]?\d*\.?\d?\b" file.txt
+
+Match a pattern consists of smaller case characters of 4 characters long.
+perl -ne "print if /\b[a-z]{4}\b/" file.txt
+
+match the pattern which starts with uppercase character
+perl -ne "print if /^[A-Z].*$/" file.txt
+
+write a perl script using file handling
+Get the file name from user
+open the file, if unsuccessful, print error message and exit
+add line numbers to the content
+Print total number of lines in file
+
+#!/usr/bin/perl
+print "Enter the file name: ";
+$filename = <STDIN>;
+chomp $filename;
+
+open(FH, '<', $filename) or die "Cannot open $filename $!"
+while(<FH>){
+  print "$.: $-"; 
+}
+print "Total number of lines in $filename: $. \n";
+close(FH);
+
+Perl script example.
+#!/usr/bin/perl
+use strict;
+use warnings;
+my $string = "Perl has 196905 modules, written by 14100 authors";
+my $avg_contr = 196905/14100;
+print $avg_contr;
+print "\n";
+if ($string!~ m/\d/){
+  print "Doesn't contain numbers\n";
+}else{
+  print "Does contain numbers\n";
+}
+exit 0;
+
+Example - Prints line containing pattern "the"
+
+#!/usr/bin/perl
+$file = "path to the file";
+open(FH; '<', $file) or die ("File $file not found");
+while (my $string = <FH>)
+  if ($string =~ /the/)
+    print "$string \n";
+  }
+}
+close(FH);
+
+#!/usr/bin/perl
+$get_args = $#ARGV + 1;
+print "Total command line arguments received: $ get_args\n";
+print "The first argument is: " .$ARGV[0];
+print "The name of the program is: $0 \n";
+
+Perl program to Get filename from user
+check if file exists not
+check if file is empty or not
+check if file has execute permission or not
+
+#!/usr/bin/perl
+print "Enter the filename: ";
+$filename = <STDIN>;
+chomp $filename;
+if (-e $filename) { 
+ print "File $filename exists \n";
+  if (-z $filename) { 
+    print "File $filename is empty \n";
+  } else {
+	print "File $filencene is not empty \n";
+  if (-x $filename) {
+    print "File $filename has execute permission \n";
+  }else{
+    print "File $filename does not have execute permission \n";
+  }
+} else {
+print "File $filename does not exist \n";
+}
+
+write a perl script to complete below task
+add line number to given file
+print lines where the length is less than 5
+print lines where pattern starts with "Hello"
+Print lines bwteen 1 and 5
+
+#!/usr/bin/perl
+prind "Enter the filename";
+$filename = <STDIN>;
+chomp $filename";
+open(FH, '<', $filename) or die(" File $filename not found ");
+while (<FH>) {
+  my $line_with_num = "$.:$_";
+  if (length($_) <5) {
+    print "$line_with_num \n";
+  }
+  if (/^Hello/){
+    print "$line_with_num\n";
+  }
+  if ($. >=1 && $. <= 5) {
+    Print "Lines b/w 1 & 5 $line_with_num \n";
+  }
+}
+close(FH);
+
+peal program to get phone number and country code from user
+combine both country code and phone number
+check whether combined numbers have 12 digits convert all 1 to 2, 2 to 4
+
+#!/usr/bin/perl
+print "Enter country code:";
+$country_code = <STDIN>;
+chomp $country_code;
+
+Print "Enter phone number: ";
+$phone_number = <STDIN>;
+chomp $phone_number;
+
+$combined_number = $country_code.$phone_number;
+if (length ($combined_number) != 12){
+  print "Combined number does not have 12 digits. \n";
+  exit;
+}
+
+$combined_number =~ tr/12/24/;
+print "Combined number after conversion: $combined_number \n";
+
+create a perl script
+prompt user to enter the sentence (Store in variable) of at least 6 words.
+Pick words with "ing"
+pick words end with "ing"
+Pick words having only "a"
+count total number of words with "ing"
+
+#!/usr/bin/perl
+print "Enter a sentence (at least 6 words): ";
+$sentence = <STDIN>;
+chomp $sentence;
+@words = split /\s+/, $sentence;
+
+my @words_with_ing;
+my @words_end_with_ing;
+my @words_with_only_a;.
+my $count_ing = 0;
+
+foreach my $word (@words) {
+  push @words_with_ing, $word if $word =~/ing/;
+  push @words_end_with_ing, $word if $word =~ /ing$/;
+  push @words_with_only_a, $word if $word =~/^a+$/;
+  $count_ing ++ if $word =~ /ing/;
+}
+
+print "words with 'ing': @words_with_ing \n";
+Print "words end with 'ing': @words_end_with_ing\n";
+Print "words having only a @wolds_with_only_a \n";
+print "Total number of words with 'ing': $count_ing \n";
+
+write a peal program.
+to get person name and corresponding phone number from the user and store in a hash.
+Get the name from user and check whether name already exists or not.
+Display the name sort by name.
+count total contacts in hash.
+
+#!/usr/bin/perl
+my %phone_book;
+while (1) {
+  print "Enter name (exit to quit): ";
+  my $name = <STDIN>;
+  chomp $name;
+  last (if lc($name) eq "exit");
+  print "Enter phone number of $name:"
+  my $phone <STDIN>;
+  chomp $phone;
+  $phone_book {$name} = $phone;
+}
+print "Enter a name to check if it exists:";
+my $check_name = <STDIN>;
+chomp $check_name;
+if (exists $Phone-book {$check_name}) {
+  Print "$check_name exists with number: $phone_book{$check_name} \n";
+} else {
+  Print $check_name do not exist";
+}
+print "Names sorted:";
+foreach my $name (sort keys %phone_book){
+  print $name: $phone_book {$name}\n";
+}
+my $total contacts = scalar(keys %phone_book);
+print "Total contacts: $total_contacts \n";
+
+write a peal script to
+create an array to store name of the countries
+find the first element from the array
+Replace first and second element with new values
+Sort the values of array based on length of elements
+delete the second element from the array
+
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+my @countries = ("India", "USA", "Canada", "Japan", "Cuba");
+my $first_element = $countries [0];
+Print "First Element: $first element \n";
+$countries [0] = "Brazil";
+$countries [1] = "France";
+print "Array After Replace: @countries \n";
+
+@countries = sort{ length($a) <=> length ($b) } @countries;
+print "Array After Sorting: @countries \n";
+
+splice (@countries, 1, 1);
+print "Array After Deleting: @countries \n";
+
+total number of elements
+my $total_elements = scalar @countries;
+
+get last item. 
+my $last_item = $countries[-1];
+
+delete 3rd & 4th element.
+splice(@countries, 2, 2);
+
+join array element together in continuous String.
+my $joined_string = join",", @countries;
+
+sort in alphabetical order
+@countries = sort @countries;
+
+simulate head command
+#!/usr/bin/Perl
+use strict;
+use warnings;
+my $filename = shift @ARGV or die ("Usage: $0 <filename>\n";
+open(FH, '<', $filename) or die (cannot open $filename 'n ");
+while (<FH)) {
+  print $_;
+  last if $. == 10;
+}
+close(<FH>);
+
+Display user name with underscore b/w each letter.
+@chars split(//, $full_name);
+$full_name = join('-', @chars);
+or
+$username = join("-", split(//, $first_name));
+
+write a perl script to do following
+create array lang with spanish, French, English, kannada, Tulu, Hindii
+change 'Hindii' to 'Hindi'
+Add Arabic to end of the array
+Delete spanish from array
+print the resulting arry and its length.
+
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+my @lang = ("Spanish", "French", "English", "Kannada", "Tulu", "Hindii");
+foreach my $language (@lang) { 
+  $language =~ s/Hindii/Hindi/;
+}
+push @lang, "Arabic";
+#Delete Spanish
+@lang = grep {$_ ne "Spanish" } @lang;
+Print Array: @lang \n";
+print Length:" .scalar(@lang) ."\n";
+
+copy content of filel to File 2 using file IO
+#!/us1/bin/perl
+use strict;
+use warnings;
+my $filel 'filel.txt'
+my $file2 'file2.txt';
+open (my $fhl, '<', $filel) or die ("cant open $filel").
+open (my $fh2, '>', $file2) or die ("cant open $file2").
+while (my $line = <$fh1>) {
+  print $fh2 $line;
+}
+close ($thl);
+close ($fh2);
+
+Explain subroutine in perl.
+
+sub greet {
+my $name = shift;
+print "Hello, $name!\n";
+}
+greet ("First");
+greet ("Last");
+
+Perl script to calculate factorial
+#!/usr/bin/perl
+use strict;
+use warnings;
+if ($#ARGV != 0) {
+  die "Usage: $0 <number>\n";
+}
+my $sum = $ARGV[0];
+my $factorial = 1;
+for (my $i = 1; $i<= $num; $i++) {
+  $factorial *= $i
+}
+print "Factorial of $num is $factorial \n";
+
+1. Create a perl script named lab91.pl in your directory. The script must perform the following: 
+• Ask the user for their first name and store the value in a variable  
+•  Ask the user for their last name and store the value in a variable. 
+• Ask the user at least two additional questions and store the values in variables. 
+• Display values in these variables back to the screen a sentence or two. 
+#!usr/bin/perl 
+# Ask the user for their first name and store the value in a variable 
+print "Enter your First Name : "; 
+$first_name = <STDIN>; 
+chomp $first_name; 
+# Ask the user for their last name and store the value in a variable 
+print "Enter your Last Name : "; 
+$last_name = <STDIN>; 
+chomp $last_name; 
+# Ask the user at least two additional questions and store the values in variables 
+print "Enter your state : "; 
+$state = <STDIN>; 
+chomp $state; 
+print "Enter your constituency : "; 
+$constituency = <STDIN>; 
+chomp $constituency; 
+$name = $first_name . $last_name; 
+print "Name : $name\n"; 
+print "State : $state\n"; 
+print "constituency : $constituency\n"; 
+
+2. 2. Create a perl script named lab92.pl in your directory. The script that has the following 
+features: 
+• Prompt the user to enter their full name 
+• Print this returned value to the screen. 
+• Prompt the user to enter the current day the week. 
+• Convert the day of the week to the first 3 letters with the first capitalized.  
+Monday == Mon). 
+(e.g. 
+•  Print the day and the username to the screen with some descriptive text using one print 
+statement. 
+• Display the username in all upper case letters 
+• Display the username in all lower case letters 
+• If the username is longer than five characters, display the username with the last three 
+letters in upper case and all others in lower case. 
+• Display the username with the first and last letters in lower case and all others in upper 
+case. 
+•  Display the username with an underscore character between each letter. HINT (join and 
+split) 
+#!usr/bin/perl 
+# Prompt the user to enter their full name 
+print "Enter your Full Name : "; 
+$full_name = <STDIN>; 
+chomp $full_name; 
+# Print this returned value to the screen 
+print "Full Name : $full_name\n"; 
+# Prompt the user to enter the current day the week 
+print "Enter current day of week : "; 
+$curr_day = <STDIN>; 
+chomp $curr_day; 
+# Convert the day of the week to the first 3 letters with the first capitalized (e.g. Monday == Mon). 
+$curr_day = ucfirst(lc(substr($curr_day, 0, 3))); 
+# Print the day and the username to the screen with some descriptive text using one print statement 
+print "Hi $full_name today is $curr_day\n"; 
+# Display the username in all upper case letters 
+print "User Name : " . uc($full_name) . "\n"; 
+# Display the username in all lower case letters 
+print "User Name : " . lc($full_name) . "\n"; 
+# If the username is longer than five characters, display the username with the last three letters in 
+upper case and all others in lower case. 
+if (length($full_name) > 5) {
+$first_part = lc(substr($full_name, 0, -3)); 
+$last_part = uc(substr($full_name, -3)); 
+print "User Name : $first_part$last_part\n"; 
+} 
+# Display the username with the first and last letters in lower case and all others in upper case. 
+@chars = split(//, $full_name); 
+$first_last_lower = lc($chars[0]) . uc(join('', @chars[1..$#chars-1])) . lc($chars[$#chars]); 
+print "User Name : $first_last_lower\n"; 
+# Display the username with an underscore character between each letter. HINT (join and split) 
+$full_name_ = join('_', @chars); 
+print "User Name : $full_name_\n";
